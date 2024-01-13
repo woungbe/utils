@@ -26,7 +26,6 @@ func ConvertAmount(amount float64, pow int) *big.Int {
 func DecimalCount(price string) (bool, int) {
 	value, err := strconv.ParseFloat(price, 64)
 	if err != nil {
-		fmt.Println("부동소수점 변환 오류:", err)
 		return false, -1
 	}
 
@@ -38,7 +37,6 @@ func DecimalCount(price string) (bool, int) {
 	parts := strings.Split(strValue, ".")
 	if len(parts) == 2 {
 		decimalPlaces = len(parts[1])
-		fmt.Println("소수점 이하 자릿수:", decimalPlaces)
 	} else {
 		if len(parts[0]) == 1 {
 			i, _ := strconv.Atoi(parts[0])
@@ -46,7 +44,6 @@ func DecimalCount(price string) (bool, int) {
 				return true, 0
 			}
 		}
-		fmt.Println("부동소수점 형식이 아닙니다.")
 		return false, decimalPlaces
 	}
 
